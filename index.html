@@ -37,6 +37,7 @@ body::before{
     z-index:-1;
 }
 
+
 /* =========================
    PAGE
 ========================= */
@@ -48,6 +49,7 @@ body::before{
     min-height:100vh;
     padding-bottom:50px;
 }
+
 
 /* =========================
    HEADER
@@ -73,6 +75,7 @@ body::before{
     font-size:13px;
 }
 
+
 /* =========================
    PHOTO CARD
 ========================= */
@@ -90,16 +93,19 @@ body::before{
 
 .photo-box{
     position:relative;
-    background:#000;
     width:100%;
     min-height:320px;
+    background:#000;
 
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-/* FOTO */
+
+/* =========================
+   PHOTO
+========================= */
 
 .photo-box img{
     width:100%;
@@ -107,7 +113,17 @@ body::before{
     max-height:75vh;
     object-fit:cover;
     background:#000;
+
+    opacity:0;
+
+    transition:
+        opacity .6s ease;
 }
+
+.photo-box img.show{
+    opacity:1;
+}
+
 
 /* =========================
    LOADING
@@ -138,15 +154,16 @@ body::before{
 }
 
 .loading-spinner{
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
 
     border:3px solid rgba(255,255,255,.15);
     border-top-color:#ff2f6d;
 
     border-radius:50%;
 
-    animation:spin .8s linear infinite;
+    animation:
+        loadingSpin .8s linear infinite;
 
     margin-bottom:12px;
 }
@@ -157,24 +174,14 @@ body::before{
     letter-spacing:.5px;
 }
 
-@keyframes spin{
+@keyframes loadingSpin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
-/* =========================
-   IMAGE HIDDEN INITIALLY
-========================= */
-
-#mainPhoto{
-    opacity:0;
-    transition:opacity .6s ease;
-}
-
-#mainPhoto.show{
-    opacity:1;
-}
 
 /* =========================
    GRADIENT
@@ -182,10 +189,13 @@ body::before{
 
 .photo-box::after{
     content:"";
+
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
+
     height:140px;
 
     background:
@@ -196,8 +206,10 @@ body::before{
         );
 
     pointer-events:none;
+
     z-index:2;
 }
+
 
 /* =========================
    BADGE
@@ -224,6 +236,7 @@ body::before{
         0 5px 15px rgba(255,0,102,.4);
 }
 
+
 /* =========================
    INFO
 ========================= */
@@ -240,10 +253,13 @@ body::before{
 
 .photo-desc{
     margin-top:10px;
+
     color:#aaa;
+
     font-size:14px;
     line-height:1.6;
 }
+
 
 /* =========================
    STATS
@@ -251,12 +267,18 @@ body::before{
 
 .stats{
     display:flex;
+
     gap:14px;
+
     margin-top:14px;
+
     color:#ccc;
+
     font-size:13px;
+
     flex-wrap:wrap;
 }
+
 
 /* =========================
    WATCH BUTTON
@@ -309,6 +331,7 @@ body::before{
     transform:scale(.98);
 }
 
+
 /* =========================
    TRENDING
 ========================= */
@@ -319,6 +342,7 @@ body::before{
     font-size:18px;
     font-weight:700;
 }
+
 
 /* =========================
    NATIVE BANNER
@@ -350,22 +374,6 @@ body::before{
     letter-spacing:1px;
 }
 
-/* =========================
-   BANNER FIRST
-========================= */
-
-.native-banner{
-    opacity:1;
-    transform:translateY(0);
-
-    transition:
-        opacity .5s ease,
-        transform .5s ease;
-}
-
-.native-banner.hide{
-    opacity:.85;
-}
 
 /* =========================
    HISTATS
@@ -385,6 +393,7 @@ body::before{
     border:1px solid rgba(255,255,255,.05);
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -398,6 +407,7 @@ body::before{
 
     padding:30px 15px;
 }
+
 
 /* =========================
    MOBILE
@@ -448,42 +458,21 @@ body::before{
 
 
 <!-- =========================
-     NATIVE BANNER
-     MUNCUL TERLEBIH DAHULU
-========================= -->
-
-<div class="ads-card native-banner" id="nativeBanner">
-
-    <div class="ads-label">
-        <center>Advertisement</center>
-    </div>
-
-    <div style="text-align:center;">
-
-        <script
-            data-cfasync="false"
-            async
-            type="text/javascript"
-            src="//qw.rolledipocras.com/tiTtAiKEeLuZ/151239">
-        </script>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
      PHOTO CARD
 ========================= -->
 
 <div class="photo-card">
+
 
     <div class="photo-box">
 
 
         <!-- LOADING -->
 
-        <div class="photo-loading" id="photoLoading">
+        <div
+            class="photo-loading"
+            id="photoLoading"
+        >
 
             <div class="loading-spinner"></div>
 
@@ -501,7 +490,7 @@ body::before{
         </div>
 
 
-        <!-- FOTO ACEIMG -->
+        <!-- ACEIMG PHOTO -->
 
         <img
             id="mainPhoto"
@@ -513,13 +502,17 @@ body::before{
     </div>
 
 
-    <!-- INFO -->
+    <!-- =========================
+         INFO
+    ========================= -->
 
     <div class="photo-info">
+
 
         <div class="photo-title">
             Hot Trending Video Tonight 😍
         </div>
+
 
         <div class="photo-desc">
             Watch the latest viral content people are talking about right now.
@@ -557,6 +550,7 @@ body::before{
             WATCH NOW
         </a>
 
+
     </div>
 
 </div>
@@ -568,6 +562,31 @@ body::before{
 
 <div class="section-title">
     🔥 Trending Videos
+</div>
+
+
+<!-- =========================
+     NATIVE BANNER
+     POSISI DI BAWAH FOTO
+========================= -->
+
+<div class="ads-card">
+
+    <div class="ads-label">
+        <center>Advertisement</center>
+    </div>
+
+    <div style="text-align:center;">
+
+        <script
+            data-cfasync="false"
+            async
+            type="text/javascript"
+            src="//qw.rolledipocras.com/tiTtAiKEeLuZ/151239">
+        </script>
+
+    </div>
+
 </div>
 
 
@@ -601,15 +620,21 @@ body::before{
             ''
         ]);
 
+
         (function(){
 
-            var hs = document.createElement('script');
+            var hs =
+                document.createElement('script');
 
-            hs.type = 'text/javascript';
+            hs.type =
+                'text/javascript';
 
-            hs.async = true;
+            hs.async =
+                true;
 
-            hs.src = '//s10.histats.com/js15_as.js';
+            hs.src =
+                '//s10.histats.com/js15_as.js';
+
 
             (
                 document.getElementsByTagName('head')[0] ||
@@ -623,7 +648,10 @@ body::before{
 
     <noscript>
 
-        <a href="/" target="_blank">
+        <a
+            href="/"
+            target="_blank"
+        >
 
             <img
                 src="//sstatic1.histats.com/0.gif?5044778&101"
@@ -636,6 +664,7 @@ body::before{
     </noscript>
 
     <!-- Histats.com END -->
+
 
 </div>
 
@@ -655,15 +684,16 @@ body::before{
 
 
 <!-- =========================
-     JAVASCRIPT UTAMA
+     JAVASCRIPT
 ========================= -->
 
 <script>
 
 (function(){
 
+
     /* =========================
-       FOTO ACEIMG
+       ACEIMG PHOTO
     ========================= */
 
     const PHOTO_URL =
@@ -683,16 +713,19 @@ body::before{
     ========================= */
 
     const mainPhoto =
-        document.getElementById("mainPhoto");
+        document.getElementById(
+            "mainPhoto"
+        );
 
     const photoLoading =
-        document.getElementById("photoLoading");
+        document.getElementById(
+            "photoLoading"
+        );
 
     const watchButton =
-        document.getElementById("watchButton");
-
-    const nativeBanner =
-        document.getElementById("nativeBanner");
+        document.getElementById(
+            "watchButton"
+        );
 
 
     /* =========================
@@ -708,14 +741,14 @@ body::before{
 
 
     /* =========================
-       LOADING 2 DETIK
+       WAIT 2 SECONDS
     ========================= */
 
     setTimeout(function(){
 
 
         /* =========================
-           LOAD FOTO ACEIMG
+           LOAD ACEIMG PHOTO
         ========================= */
 
         if(mainPhoto){
@@ -727,16 +760,30 @@ body::before{
             mainPhoto.onload =
                 function(){
 
-                    mainPhoto.classList.add("show");
+
+                    /* SHOW PHOTO */
+
+                    mainPhoto.classList.add(
+                        "show"
+                    );
+
+
+                    /* HIDE LOADING */
 
                     if(photoLoading){
 
-                        photoLoading.classList.add("hide");
+                        photoLoading.classList.add(
+                            "hide"
+                        );
 
                     }
 
                 };
 
+
+            /* =========================
+               ERROR
+            ========================= */
 
             mainPhoto.onerror =
                 function(){
@@ -744,23 +791,14 @@ body::before{
                     if(photoLoading){
 
                         photoLoading.innerHTML =
-                            '<div class="loading-text">Image failed to load</div>';
+
+                            '<div class="loading-text">' +
+                            'Image failed to load' +
+                            '</div>';
 
                     }
 
                 };
-
-        }
-
-
-        /* =========================
-           NATIVE BANNER TETAP SUDAH
-           TAMPIL TERLEBIH DAHULU
-        ========================= */
-
-        if(nativeBanner){
-
-            nativeBanner.classList.add("hide");
 
         }
 
@@ -776,7 +814,10 @@ body::before{
         new Set();
 
 
-    function tagImpression(name,element){
+    function tagImpression(
+        name,
+        element
+    ){
 
         if(
             !element ||
@@ -799,7 +840,8 @@ body::before{
 
             const data =
                 JSON.parse(
-                    localStorage.getItem(key) || "[]"
+                    localStorage.getItem(key) ||
+                    "[]"
                 );
 
 
@@ -848,72 +890,80 @@ body::before{
 
 
     /* =========================
-       PHOTO & ADS
+       PHOTO / BANNER
     ========================= */
 
     const photoCard =
-        document.querySelector(".photo-card");
+        document.querySelector(
+            ".photo-card"
+        );
 
     const adCard =
-        document.querySelector(".ads-card");
+        document.querySelector(
+            ".ads-card"
+        );
 
 
     /* =========================
        INTERSECTION OBSERVER
     ========================= */
 
-    if("IntersectionObserver" in window){
+    if(
+        "IntersectionObserver" in window
+    ){
 
         const observer =
             new IntersectionObserver(
 
-                (entries)=>{
+                function(entries){
 
-                    entries.forEach(entry=>{
+                    entries.forEach(
+                        function(entry){
 
-                        if(
-                            !entry.isIntersecting ||
-                            entry.intersectionRatio < 0.25
-                        ){
+                            if(
+                                !entry.isIntersecting ||
+                                entry.intersectionRatio < 0.25
+                            ){
 
-                            return;
+                                return;
 
-                        }
+                            }
 
 
-                        /* PHOTO */
+                            /* PHOTO */
 
-                        if(
-                            entry.target === photoCard
-                        ){
+                            if(
+                                entry.target === photoCard
+                            ){
 
-                            tagImpression(
-                                "photo_impression",
+                                tagImpression(
+                                    "photo_impression",
+                                    entry.target
+                                );
+
+                            }
+
+
+                            /* NATIVE BANNER */
+
+                            if(
+                                entry.target === adCard
+                            ){
+
+                                tagImpression(
+                                    "native_banner_impression",
+                                    entry.target
+                                );
+
+                            }
+
+
+                            observer.unobserve(
                                 entry.target
                             );
 
                         }
-
-
-                        /* BANNER */
-
-                        if(
-                            entry.target === adCard
-                        ){
-
-                            tagImpression(
-                                "native_banner_impression",
-                                entry.target
-                            );
-
-                        }
-
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    });
+                    );
 
                 },
 
@@ -924,8 +974,6 @@ body::before{
             );
 
 
-        /* OBSERVE PHOTO */
-
         if(photoCard){
 
             observer.observe(
@@ -934,8 +982,6 @@ body::before{
 
         }
 
-
-        /* OBSERVE ADS */
 
         if(adCard){
 
